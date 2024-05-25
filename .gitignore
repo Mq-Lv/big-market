@@ -1,3 +1,5 @@
 # Project exclude paths
 /big-market-app/target/
 /big-market-types/target/
+/.idea/
+/data/
