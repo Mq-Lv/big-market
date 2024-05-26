@@ -1,0 +1,8 @@
+24-05-26.10:02:03.272 [main            ] INFO  DaoTest                - Starting DaoTest using Java 17.0.2 on Qiao with PID 5028 (started by 10744 in D:\big-market-project\big-market\big-market-app)
+24-05-26.10:02:03.272 [main            ] INFO  DaoTest                - The following 1 profile is active: "dev"
+24-05-26.10:02:04.913 [main            ] INFO  DaoTest                - Started DaoTest in 1.92 seconds (JVM running for 4.936)
+24-05-26.10:02:05.311 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+24-05-26.10:02:05.615 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+24-05-26.10:02:05.748 [main            ] INFO  DaoTest                - 测试结果：{"awardConfig":"1,100","awardDesc":"用户积分【优先透彻规则范围，如果没有则走配置】","awardId":101,"awardKey":"user_credit_random","createTime":1702120026000,"id":1,"updateTime":1702120891000}
+24-05-26.10:02:05.759 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+24-05-26.10:02:05.781 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mql.infrastructure.persistent.dao.StrategyAwardMapper">
+
+    <resultMap id="BaseResultMap" type="com.mql.infrastructure.persistent.po.StrategyAward">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="strategyId" column="strategy_id" jdbcType="BIGINT"/>
+            <result property="awardId" column="award_id" jdbcType="INTEGER"/>
+            <result property="awardTitle" column="award_title" jdbcType="VARCHAR"/>
+            <result property="awardSubtitle" column="award_subtitle" jdbcType="VARCHAR"/>
+            <result property="awardCount" column="award_count" jdbcType="INTEGER"/>
+            <result property="awardCountSurplus" column="award_count_surplus" jdbcType="INTEGER"/>
+            <result property="awardRate" column="award_rate" jdbcType="DECIMAL"/>
+            <result property="ruleModels" column="rule_models" jdbcType="VARCHAR"/>
+            <result property="sort" column="sort" jdbcType="INTEGER"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,strategy_id,award_id,
+        award_title,award_subtitle,award_count,
+        award_count_surplus,award_rate,rule_models,
+        sort,create_time,update_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from strategy_award
+        where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from strategy_award
+        where  id = #{id,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="StrategyAward" useGeneratedKeys="true">
+        insert into strategy_award
+        ( id,strategy_id,award_id
+        ,award_title,award_subtitle,award_count
+        ,award_count_surplus,award_rate,rule_models
+        ,sort,create_time,update_time
+        )
+        values (#{id,jdbcType=BIGINT},#{strategyId,jdbcType=BIGINT},#{awardId,jdbcType=INTEGER}
+        ,#{awardTitle,jdbcType=VARCHAR},#{awardSubtitle,jdbcType=VARCHAR},#{awardCount,jdbcType=INTEGER}
+        ,#{awardCountSurplus,jdbcType=INTEGER},#{awardRate,jdbcType=DECIMAL},#{ruleModels,jdbcType=VARCHAR}
+        ,#{sort,jdbcType=INTEGER},#{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="StrategyAward" useGeneratedKeys="true">
+        insert into strategy_award
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="strategyId != null">strategy_id,</if>
+                <if test="awardId != null">award_id,</if>
+                <if test="awardTitle != null">award_title,</if>
+                <if test="awardSubtitle != null">award_subtitle,</if>
+                <if test="awardCount != null">award_count,</if>
+                <if test="awardCountSurplus != null">award_count_surplus,</if>
+                <if test="awardRate != null">award_rate,</if>
+                <if test="ruleModels != null">rule_models,</if>
+                <if test="sort != null">sort,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=BIGINT},</if>
+                <if test="strategyId != null">#{strategyId,jdbcType=BIGINT},</if>
+                <if test="awardId != null">#{awardId,jdbcType=INTEGER},</if>
+                <if test="awardTitle != null">#{awardTitle,jdbcType=VARCHAR},</if>
+                <if test="awardSubtitle != null">#{awardSubtitle,jdbcType=VARCHAR},</if>
+                <if test="awardCount != null">#{awardCount,jdbcType=INTEGER},</if>
+                <if test="awardCountSurplus != null">#{awardCountSurplus,jdbcType=INTEGER},</if>
+                <if test="awardRate != null">#{awardRate,jdbcType=DECIMAL},</if>
+                <if test="ruleModels != null">#{ruleModels,jdbcType=VARCHAR},</if>
+                <if test="sort != null">#{sort,jdbcType=INTEGER},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="StrategyAward">
+        update strategy_award
+        <set>
+                <if test="strategyId != null">
+                    strategy_id = #{strategyId,jdbcType=BIGINT},
+                </if>
+                <if test="awardId != null">
+                    award_id = #{awardId,jdbcType=INTEGER},
+                </if>
+                <if test="awardTitle != null">
+                    award_title = #{awardTitle,jdbcType=VARCHAR},
+                </if>
+                <if test="awardSubtitle != null">
+                    award_subtitle = #{awardSubtitle,jdbcType=VARCHAR},
+                </if>
+                <if test="awardCount != null">
+                    award_count = #{awardCount,jdbcType=INTEGER},
+                </if>
+                <if test="awardCountSurplus != null">
+                    award_count_surplus = #{awardCountSurplus,jdbcType=INTEGER},
+                </if>
+                <if test="awardRate != null">
+                    award_rate = #{awardRate,jdbcType=DECIMAL},
+                </if>
+                <if test="ruleModels != null">
+                    rule_models = #{ruleModels,jdbcType=VARCHAR},
+                </if>
+                <if test="sort != null">
+                    sort = #{sort,jdbcType=INTEGER},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="StrategyAward">
+        update strategy_award
+        set 
+            strategy_id =  #{strategyId,jdbcType=BIGINT},
+            award_id =  #{awardId,jdbcType=INTEGER},
+            award_title =  #{awardTitle,jdbcType=VARCHAR},
+            award_subtitle =  #{awardSubtitle,jdbcType=VARCHAR},
+            award_count =  #{awardCount,jdbcType=INTEGER},
+            award_count_surplus =  #{awardCountSurplus,jdbcType=INTEGER},
+            award_rate =  #{awardRate,jdbcType=DECIMAL},
+            rule_models =  #{ruleModels,jdbcType=VARCHAR},
+            sort =  #{sort,jdbcType=INTEGER},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP}
+        where   id = #{id,jdbcType=BIGINT} 
+    </update>
+</mapper>
