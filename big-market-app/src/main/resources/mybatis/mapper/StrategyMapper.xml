@@ -5,15 +5,16 @@
 <mapper namespace="com.mql.infrastructure.persistent.dao.StrategyMapper">
 
     <resultMap id="BaseResultMap" type="com.mql.infrastructure.persistent.po.Strategy">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="strategyId" column="strategy_id" jdbcType="BIGINT"/>
-            <result property="strategyDesc" column="strategy_desc" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="strategyId" column="strategy_id" jdbcType="BIGINT"/>
+        <result property="strategyDesc" column="strategy_desc" jdbcType="VARCHAR"/>
+        <result property="ruleModels" column="rule_models" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,strategy_id,strategy_desc,
+        id,strategy_id,strategy_desc,rule_models,
         create_time,update_time
     </sql>
 
@@ -22,6 +23,13 @@
         <include refid="Base_Column_List" />
         from strategy
         where  id = #{id,jdbcType=BIGINT} 
+    </select>
+
+    <select id="queryStrategyByStrategyId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from strategy
+        where  strategy_id = #{strategyId,jdbcType=BIGINT}
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

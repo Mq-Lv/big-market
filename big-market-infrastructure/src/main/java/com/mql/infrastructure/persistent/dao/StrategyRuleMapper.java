@@ -3,6 +3,7 @@ package com.mql.infrastructure.persistent.dao;
 
 import com.mql.infrastructure.persistent.po.StrategyRule;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author 10744
@@ -25,4 +26,5 @@ public interface StrategyRuleMapper {
 
     int updateByPrimaryKey(StrategyRule record);
 
+    StrategyRule queryStrategyRule(@Param("strategyId") Long strategyId, @Param("ruleModel") String ruleModel);
 }

@@ -4,6 +4,8 @@ package com.mql.infrastructure.persistent.dao;
 import com.mql.infrastructure.persistent.po.StrategyAward;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
 * @author 10744
 * @description 针对表【strategy_award】的数据库操作Mapper
@@ -25,4 +27,5 @@ public interface StrategyAwardMapper {
 
     int updateByPrimaryKey(StrategyAward record);
 
+    List<StrategyAward> selectByStrategyId(Long strategyId);
 }

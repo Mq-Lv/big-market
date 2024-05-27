@@ -32,6 +32,12 @@
         from strategy_award
         where  id = #{id,jdbcType=BIGINT} 
     </select>
+    <select id="selectByStrategyId" resultMap="BaseResultMap" >
+        select
+        <include refid="Base_Column_List" />
+        from strategy_award
+        where  strategy_id = #{strategyId,jdbcType=BIGINT}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from strategy_award

@@ -1,6 +1,7 @@
 package com.mql.infrastructure.persistent.dao;
 
 
+
 import com.mql.infrastructure.persistent.po.Strategy;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -25,4 +26,5 @@ public interface StrategyMapper {
 
     int updateByPrimaryKey(Strategy record);
 
+    Strategy queryStrategyByStrategyId(Long strategyId);
 }
