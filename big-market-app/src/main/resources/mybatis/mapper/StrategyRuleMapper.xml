@@ -35,6 +35,13 @@
         where  strategy_id = #{strategyId,jdbcType=BIGINT} and rule_model = #{ruleModel,jdbcType=VARCHAR}
 
     </select>
+    <select id="queryStrategyRuleValue" resultType="java.lang.String">
+        select rule_value from strategy_rule
+        where  strategy_id = #{strategyId,jdbcType=BIGINT} and rule_model = #{ruleModel,jdbcType=VARCHAR}
+        <if test="awardId != null">
+            and award_id = #{awardId,jdbcType=INTEGER}
+        </if>
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from strategy_rule

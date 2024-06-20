@@ -44,6 +44,7 @@ public class StrategyRepository implements IStrategyRepository {
 
     @Resource
     private StrategyRuleMapper strategyRuleMapper;
+
     /**
      * 查询指定策略下的奖品列表。
      * 该方法首先尝试从Redis缓存中获取奖品列表，如果缓存存在且不为空，则直接返回缓存数据；
@@ -174,5 +175,15 @@ public class StrategyRepository implements IStrategyRepository {
         strategyRuleEntity.setAwardId(strategyRule.getAwardId());
         strategyRuleEntity.setRuleType(strategyRule.getRuleType());
          return strategyRuleEntity;
+    }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleMapper.queryStrategyRuleValue(strategyRule);
+
     }
 }

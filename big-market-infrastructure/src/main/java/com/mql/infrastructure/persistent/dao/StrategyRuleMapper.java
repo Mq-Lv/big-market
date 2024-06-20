@@ -27,4 +27,6 @@ public interface StrategyRuleMapper {
     int updateByPrimaryKey(StrategyRule record);
 
     StrategyRule queryStrategyRule(@Param("strategyId") Long strategyId, @Param("ruleModel") String ruleModel);
+
+    String queryStrategyRuleValue(@Param("strategyRule") StrategyRule strategyRule);
 }

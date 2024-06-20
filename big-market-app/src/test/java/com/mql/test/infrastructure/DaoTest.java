@@ -89,4 +89,32 @@ public class DaoTest {
         log.info("测试结果：{}",bigDecimal);
     }
 
+    @Test
+    public void test3(){
+        List<Integer> analyticalSortedKeys = new ArrayList<>();
+        Integer nextValue = null;
+        analyticalSortedKeys.add(0);
+        for(int i = 1; i <= 20; i+=2){
+            analyticalSortedKeys.add(i);
+        }
+        int userScore = -1;
+
+        for(int i = 0, j = analyticalSortedKeys.size() - 1; i <= j;){
+            int mid = (i + j) / 2;
+            if(analyticalSortedKeys.get(mid).equals(userScore)){
+                nextValue = analyticalSortedKeys.get(mid);
+                break;
+            }else if(analyticalSortedKeys.get(mid) > userScore){
+                j = mid - 1;
+            } else if (analyticalSortedKeys.get(mid) < userScore) {
+                if(mid + 1 >= analyticalSortedKeys.size() || analyticalSortedKeys.get(mid + 1) > userScore ){
+                    nextValue = analyticalSortedKeys.get(mid);
+                    break;
+                }
+                i = mid + 1;
+            }
+        }
+        log.info("输出为：{}",nextValue);
+    }
+
 }
